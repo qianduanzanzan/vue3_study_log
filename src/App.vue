@@ -1,17 +1,29 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { ref,Ref,reactive } from 'vue';
+interface C {
+  d:string
+}
+let a:number = 6666
+const b:Ref<string> = ref('b')
+setTimeout(() => {
+  b.value = 'bbbbb'
+}, 1000);
+const c:C = reactive({
+  d: 'ccc'
+})
+setTimeout(() => {
+  c.d = 'ddddddd'
+}, 1000);
 </script>
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    {{a}}
+    <br>
+    {{ b }}
+    <br>
+    {{ c.d }}
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
